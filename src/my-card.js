@@ -1,39 +1,68 @@
 import { LitElement, html, css } from 'lit';
 
-/**
- * Now it's your turn. Here's what we need to try and do:
- * 1. Get you HTML from your card working in here 
- * 2. Get your CSS rescoped as needed to work here
- */
-
 export class MyCard extends LitElement {
-
-  static get tag() {
-    return 'my-card';
-  }
-
-  constructor() {
-    super();
-    this.title = "My card";
+  static get properties() {
+    return {
+      title: { type: String },
+      description: { type: String },
+      image: { type: String },
+      link: { type: String },
+      fancy: { type: Boolean },
+    };
   }
 
   static get styles() {
     return css`
       :host {
         display: block;
+        margin: 16px;
+      }
+      .card {
+        width: 400px;
+        border: 2px solid black;
+        padding: 16px;
+      }
+      .card img {
+        width: 400px;
+        height: 200px;
+      }
+      .card h2 {
+        margin: 8px 0;
+      }
+      .card a {
+        background-color: blue;
+        color: white;
+        padding: 8px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+      }
+      .fancy {
+        background-color: orange;
       }
     `;
   }
 
-  render() {
-    return html`<div>${this.title}</div>`;
+  constructor() {
+    super();
+    // Set default values
+    this.title = 'The Last Person';
+    this.description = 'A hilarious sketch about people being bad at driving';
+    this.image = 'https://pyxis.nymag.com/v1/imgs/d5b/ba6/8190fc62ab3a596c2587131a644a1a7852-07-key-peele-2.2x.rhorizontal.w710.jpg';
+    this.link = 'https://www.youtube.com/watch?v=CI_mFIfFars';
+    this.fancy = false;
   }
 
-  static get properties() {
-    return {
-      title: { type: String },
-    };
+  render() {
+    return html`
+      <div class="card ${this.fancy ? 'fancy' : ''}">
+        <img src="${this.image}" alt="Key and Peele">
+        <h2>${this.title}</h2>
+        <p>${this.description}</p>
+        <a href="${this.link}">Details</a>
+      </div>
+    `;
   }
 }
 
-globalThis.customElements.define(MyCard.tag, MyCard);
+customElements.define('my-card', MyCard);

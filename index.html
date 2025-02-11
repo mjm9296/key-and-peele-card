@@ -1,42 +1,58 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="Description" content="Put your description here.">
+    <base href="/">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Boilerplate for polaris chip">
-  <base href="/">
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+    </style>
+    <title>my-card</title>
+  </head>
 
-  <style>
-    :root,
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
-    }
-    polaris-chip {
-      margin: 16px;
-    }
-  </style>
-  <title>polaris-chip / my-card</title>
-</head>
+  <body>
+    <div>
 
-<body>
-  <h1>polaris-chip</h1>
-  <!-- this is going to do whatever the tag's defaults are -->
-  <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
-  <polaris-chip title="Faculty and Staff"></polaris-chip>
-  <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
-  <polaris-chip title="Grants and donations"></polaris-chip>
+      <my-card></my-card>
 
-  <h1>my-card</h1>
-  <my-card></my-card>
+      <my-card 
+        title="Substitute Teacher" 
+        description="The classic sketch about pronunciation"
+        image="https://media.npr.org/assets/img/2013/12/23/season-two-gallery-2-ian-white_wide-7780c3bc90726bfb95c5decdcaf257a2ab1fcff8.jpg"
+        link="https://www.youtube.com/watch?v=Dd7FixvoKBw"
+        fancy>
+      </my-card>
 
-  <!-- this is what is bringing in the definition for this tag -->
-  <script type="module" src="./src/polaris-chip.js"></script>
-  <script type="module" src="./src/my-card.js"></script>
-</body>
+      <my-card 
+        title="Continental Breakfast"
+        description="A man really enjoys his continental breakfast"
+        image="https://i.ytimg.com/vi/st21dIMaGMs/maxresdefault.jpg"
+        link="https://www.youtube.com/watch?v=st21dIMaGMs">
+      </my-card>
 
+      <my-card 
+        title="East/West Bowl"
+        description="Football players introduce themselves"
+        image="https://i.ytimg.com/vi/gODZzSOelss/maxresdefault.jpg"
+        link="https://www.youtube.com/watch?v=gODZzSOelss"
+        fancy>
+      </my-card>
+
+      <my-card 
+        title="Aerobics Meltdown"
+        description="An aerobics competition takes a dark turn"
+        image="https://i.ytimg.com/vi/4k-Dd71CqnM/maxresdefault.jpg"
+        link="https://www.youtube.com/watch?v=4k-Dd71CqnM">
+      </my-card>
+    </div>
+
+    <script type="module" src="../src/my-card.js"></script>
+  </body>
 </html>
