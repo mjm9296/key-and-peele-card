@@ -4,11 +4,16 @@ export class MyCard extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-      description: { type: String },
       image: { type: String },
-      link: { type: String },
-      fancy: { type: Boolean },
+      fancy: { type: Boolean, reflect: true }
     };
+  }
+
+  constructor() {
+    super();
+    this.title = '';
+    this.image = '';
+    this.fancy = false;
   }
 
   static get styles() {
@@ -17,49 +22,73 @@ export class MyCard extends LitElement {
         display: block;
         margin: 16px;
       }
+
       .card {
-        width: 400px;
-        border: 2px solid black;
+        border: 1px solid #ccc;
+        border-radius: 8px;
         padding: 16px;
+        max-width: 300px;
       }
-      .card img {
-        width: 400px;
-        height: 200px;
+
+      img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
       }
-      .card h2 {
-        margin: 8px 0;
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        line-height: 1.2;
       }
-      .card a {
-        background-color: blue;
-        color: white;
+
+      details summary {
+        text-align: left;
+        font-size: 20px;
+        padding: 8px 0;
+        cursor: pointer;
+      }
+
+      details[open] summary {
+        font-weight: bold;
+      }
+
+      details div {
+        border: 2px solid black;
+        text-align: left;
         padding: 8px;
-        display: block;
-        text-align: center;
-        text-decoration: none;
+        height: 70px;
+        overflow: auto;
       }
-      .fancy {
-        background-color: orange;
+
+      :host([fancy]) .card {
+        background-color: var(--my-card-fancy-bg, pink);
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
       }
     `;
   }
 
-  constructor() {
-    super();
-    // Set default values
-    this.title = 'The Last Person';
-    this.description = 'A hilarious sketch about people being bad at driving';
-    this.image = 'https://pyxis.nymag.com/v1/imgs/d5b/ba6/8190fc62ab3a596c2587131a644a1a7852-07-key-peele-2.2x.rhorizontal.w710.jpg';
-    this.link = 'https://www.youtube.com/watch?v=CI_mFIfFars';
-    this.fancy = false;
+  openChanged(e) {
+    if (e.target.getAttribute('open') !== null) {
+      this.fancy = true;
+    } else {
+      this.fancy = false;
+    }
   }
 
   render() {
     return html`
-      <div class="card ${this.fancy ? 'fancy' : ''}">
-        <img src="${this.image}" alt="Key and Peele">
+      <div class="card">
         <h2>${this.title}</h2>
-        <p>${this.description}</p>
-        <a href="${this.link}">Details</a>
+        ${this.image ? html`<img src="${this.image}" alt="${this.title}"/>` : ''}
+        <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+          <summary>Description</summary>
+          <div>
+            <slot></slot>
+          </div>
+        </details>
       </div>
     `;
   }

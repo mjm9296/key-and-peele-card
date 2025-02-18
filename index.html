@@ -7,52 +7,25 @@
     <base href="/">
 
     <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
+      my-card[fancy] {
+        --my-card-fancy-bg: #FF0000;
       }
     </style>
-    <title>my-card</title>
+    
+    <script type="module" src="./src/my-card.js"></script>
   </head>
 
   <body>
-    <div>
+    <my-card title="Substitute Teacher" image="https://placehold.co/300x200">
+      <p>Substitute teacher <strong>Mr. Garvey</strong> has trouble pronouncing the names of his white students.</p>
+    </my-card>
 
-      <my-card></my-card>
+    <my-card title="East/West Bowl" image="https://placehold.co/300x200" fancy>
+      <p>Football players introduce themselves with increasingly <strong>outrageous</strong> names during a college football game.</p>
+    </my-card>
 
-      <my-card 
-        title="Substitute Teacher" 
-        description="The classic sketch about pronunciation"
-        image="https://media.npr.org/assets/img/2013/12/23/season-two-gallery-2-ian-white_wide-7780c3bc90726bfb95c5decdcaf257a2ab1fcff8.jpg"
-        link="https://www.youtube.com/watch?v=Dd7FixvoKBw"
-        fancy>
-      </my-card>
-
-      <my-card 
-        title="Continental Breakfast"
-        description="A man really enjoys his continental breakfast"
-        image="https://i.ytimg.com/vi/st21dIMaGMs/maxresdefault.jpg"
-        link="https://www.youtube.com/watch?v=st21dIMaGMs">
-      </my-card>
-
-      <my-card 
-        title="East/West Bowl"
-        description="Football players introduce themselves"
-        image="https://i.ytimg.com/vi/gODZzSOelss/maxresdefault.jpg"
-        link="https://www.youtube.com/watch?v=gODZzSOelss"
-        fancy>
-      </my-card>
-
-      <my-card 
-        title="Aerobics Meltdown"
-        description="An aerobics competition takes a dark turn"
-        image="https://i.ytimg.com/vi/4k-Dd71CqnM/maxresdefault.jpg"
-        link="https://www.youtube.com/watch?v=4k-Dd71CqnM">
-      </my-card>
-    </div>
-
-    <script type="module" src="../src/my-card.js"></script>
+    <my-card title="Obama's Anger Translator" image="https://placehold.co/300x200">
+      <p>Luther translates Barack Obama's <strong>calm</strong> diplomatic speeches into raw emotional outbursts.</p>
+    </my-card>
   </body>
 </html>
